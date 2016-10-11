@@ -54,6 +54,7 @@ docs/_build/
 target/
 
 # virtualenv
+py27/
 py34/
 
 # misc stuff
