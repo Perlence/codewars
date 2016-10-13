@@ -81,3 +81,8 @@ def test_pick_peaks():
         'should support finding peaks, but should ignore peaks on the edge of the array'
     assert pick_peaks([2, 2, 1, 3, 1, 2, 2, 2, 2]) == {'pos': [3], 'peaks': [3]}, \
         'should support finding peaks, but should ignore peaks on the edge of the array'
+
+    assert pick_peaks([1, 2, 2, 2, 3]) == {'pos': [], 'peaks': []}, \
+        'should ignore sorted sequences'
+    assert pick_peaks([3, 2, 2, 2, 1]) == {'pos': [], 'peaks': []}, \
+        'should ignore sorted sequences'
