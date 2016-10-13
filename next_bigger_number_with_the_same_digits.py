@@ -1,4 +1,4 @@
-"""Next bigger number with the same digits
+"""Next bigger number with the same digits (4 kyu)
 
 You have to create a function that takes a positive integer number and
 returns the next bigger number formed by the same digits:
@@ -12,7 +12,10 @@ If no bigger number can be composed using those digits, return -1:
     next_bigger(9)==-1
     next_bigger(111)==-1
     next_bigger(531)==-1
+
+http://www.codewars.com/kata/next-bigger-number-with-the-same-digits
 """
+
 from itertools import permutations
 
 

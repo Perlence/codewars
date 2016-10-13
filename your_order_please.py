@@ -1,4 +1,4 @@
-"""Your order, please
+"""Your order, please (6 kyu)
 
 Your task is to sort a given string. Each word in the String will
 contain a single number. This number is the position the word should

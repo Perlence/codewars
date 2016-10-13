@@ -1,4 +1,4 @@
-"""Duplicate encoder
+"""Duplicate encoder (6 kyu)
 
 The goal of this exercise is to convert a string to a new string where
 each character in the new string is '(' if that character appears only
