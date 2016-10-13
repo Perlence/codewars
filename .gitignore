@@ -57,6 +57,9 @@ target/
 py27/
 py34/
 
+# Node.js
+node_modules/
+
 # misc stuff
 tags
 .envrc
