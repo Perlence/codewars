@@ -34,16 +34,13 @@ https://www.codewars.com/kata/pick-peaks
 def pick_peaks(seq):
     pos = []
     peaks = []
-    b = 0
 
-    for i, (a, b) in enumerate(pairwise(diff(seq)), start=1):
-        if a > 0 and b <= 0:
+    pairs = pairwise((i, d) for i, d in enumerate(diff(seq), start=1)
+                     if d != 0)
+    for (i, a), (_, b) in pairs:
+        if b < 0 < a:
             pos.append(i)
             peaks.append(seq[i])
-
-    if b == 0 and pos and peaks:
-        pos.pop()
-        peaks.pop()
 
     return {'pos': pos, 'peaks': peaks}
 
@@ -86,3 +83,5 @@ def test_pick_peaks():
         'should ignore sorted sequences'
     assert pick_peaks([3, 2, 2, 2, 1]) == {'pos': [], 'peaks': []}, \
         'should ignore sorted sequences'
+
+    assert pick_peaks([1, 2, 5, 4, 3, 1, 4, 6, 0, 1, 2, 3, 3, 3, 5, 4, 3, 2, 3, 4, 5, 4]) == {'pos': [2, 7, 14, 20], 'peaks': [5, 6, 5, 5]}
