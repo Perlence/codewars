@@ -3,20 +3,25 @@
 https://www.codewars.com/kata/morse-encoding
 """
 
-from itertools import zip_longest
+from itertools import izip_longest
 
 
 class Morse:
     @classmethod
     def encode(self, message):
-        bi = '0000000'.join(['000'.join(self.alpha[char] for char in word)
-                             for word in message.split()])
-        return [to_signed_32(int(''.join(group), 2))
+        bi = '0000000'.join('000'.join(self.alpha[char] for char in word)
+                            for word in message.split())
+        return [to_int32(int(''.join(group), 2))
                 for group in grouper(bi, 32, '0')]
 
     @classmethod
     def decode(self, seq):
-        pass
+        bi = (''.join(bin(to_uint32(i32)).lstrip('-0b').zfill(32)
+                      for i32 in seq)
+                .rstrip('0'))
+        return ' '.join(''.join(self.alpha_reverse[char]
+                                for char in word.split('000'))
+                        for word in bi.split('0000000'))
 
     alpha = {
         'A': '10111',
@@ -75,23 +80,23 @@ class Morse:
         '@': '10111011101011101',
         ' ': '0'
     }
+    alpha_reverse = dict((v, k) for k, v in alpha.items())
 
 
 def grouper(iterable, n, fillvalue=None):
     """Collect data into fixed-length chunks or blocks"""
     # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx"
     args = [iter(iterable)] * n
-    return zip_longest(*args, fillvalue=fillvalue)
+    return izip_longest(*args, fillvalue=fillvalue)
 
 
-def to_signed_32(x):
+def to_int32(x):
     if x <= 0x7fffffff:
         return x
     return x - 0x100000000
 
 
-def test_morse():
-    assert Morse.encode('HELLO WORLD') == [-1440552402, -1547992901, -1896993141, -1461059584]
-    # assert Morse.decode([-1440552402, -1547992901, - 1896993141, -1461059584]) == 'HELLO WORLD'
-    assert Morse.encode('EEEEEEEIE') == [-2004318070, 536870912]
-    # assert Morse.decode([-2004318070, 536870912]) == 'EEEEEEEIE'
+def to_uint32(x):
+    if x >= 0:
+        return x
+    return x + 0x100000000
