@@ -1,3 +1,8 @@
+.PHONY: test
+test:
+	py.test *.py
+	tape *.js | tap-dot
+
 .PHONY: watch
 watch:
 	reflex -d none -g '*.py' -- py.test {} &
