@@ -1,9 +1,8 @@
 {
   "scripts": {
-    "test": "sh -c 'tape ${@:-*.js} | tap-dot' _"
+    "test": "ava"
   },
   "devDependencies": {
-    "tap-dot": "1.0.5",
-    "tape": "4.6.2"
+    "ava": "0.16.0"
   }
 }

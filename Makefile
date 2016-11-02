@@ -1,9 +1,9 @@
 .PHONY: test
 test:
 	py.test *.py
-	tape *.js | tap-dot
+	ava *.js
 
 .PHONY: watch
 watch:
 	reflex -d none -g '*.py' -- py.test {} &
-	reflex -d none -g '*.js' -- sh -c 'tape {} | tap-dot'
+	ava -w *.js

@@ -76,11 +76,10 @@ function isOpposite (dir1, dir2) {
          (dir1 === 'EAST' && dir2 === 'WEST');
 }
 
-const test = require('tape');
+const test = require('ava');
 
 test('dirReduc', (t) => {
   t.deepEqual(dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']), ['WEST']);
   t.deepEqual(dirReduc(['NORTH', 'WEST', 'SOUTH', 'EAST']), ['NORTH', 'WEST', 'SOUTH', 'EAST']);
   t.deepEqual(dirReduc(['NORTH', 'SOUTH', 'EAST', 'WEST', 'EAST', 'WEST']), []);
-  t.end();
 });

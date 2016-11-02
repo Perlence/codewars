@@ -38,7 +38,7 @@ function validBraces (s) {
   return true;
 }
 
-const test = require('tape');
+const test = require('ava');
 
 test('validBraces', (t) => {
   t.true(validBraces('()'));
@@ -49,5 +49,4 @@ test('validBraces', (t) => {
 
   t.false(validBraces('([{]})'));
   t.false(validBraces('[(])'));
-  t.end();
 });
