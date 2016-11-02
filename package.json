@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "test": "ava"
+    "test": "sh -c 'tape ${@:-*.js} | tap-dot' _",
+    "watch": "reflex -d none -g '*.js' -- sh -c 'tape {} | tap-dot'"
   },
   "devDependencies": {
-    "ava": "0.16.0"
+    "tap-dot": "1.0.5",
+    "tape": "4.6.2"
   }
 }

@@ -34,13 +34,15 @@ function gcd (a, b) {
   return a;
 }
 
-const test = require('ava');
+const test = require('tape');
 
 test('lcm', (t) => {
   t.is(lcm(2, 3, 4), 12);
+  t.end();
 });
 
 test('convertFrac', (t) => {
   let lst = [[1, 2], [1, 3], [1, 4]];
   t.is(convertFrac(lst), '(6,12)(4,12)(3,12)');
+  t.end();
 });
