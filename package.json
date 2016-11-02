@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "test": "sh -c 'tape ${@:-*.js} | tap-dot' _",
-    "watch": "reflex -d none -g '*.js' -- sh -c 'tape {} | tap-dot'"
+    "test": "sh -c 'tape ${@:-*.js} | tap-dot' _"
   },
   "devDependencies": {
     "tap-dot": "1.0.5",
