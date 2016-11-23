@@ -60,5 +60,8 @@ py34/
 # Node.js
 node_modules/
 
+# Leiningen stuff
+.lein-*
+
 # misc stuff
 tags
