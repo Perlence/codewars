@@ -32,7 +32,6 @@ def proper_fractions_sieve(n):
     return n - len(sieve) - 1
 
 
-@profile
 def proper_fractions_factored(n):
     if n == 1:
         return 0
@@ -52,14 +51,27 @@ def divisors(n):
     return result
 
 
-@profile
-def factors(n):
+def factors_linear(n):
     while n > 1:
         for i in xrange(2, n + 1):
             if n % i == 0:
                 n /= i
                 yield i
                 break
+
+
+def factors_sqrt(n):
+    d = 2
+    while d*d <= n:
+        while n % d == 0:
+            yield d
+            n //= d
+        d += 1
+    if n > 1:
+        yield n
+
+
+factors = factors_sqrt
 
 
 def ilen(it):
@@ -82,7 +94,7 @@ def test_proper_fractions():
     assert proper_fractions(10000000) == 4000000
     assert proper_fractions(20000000) == 8000000
     assert proper_fractions(50000000) == 20000000
-    # assert proper_fractions(90000003) == 60000000
+    assert proper_fractions(90000003) == 60000000
 
 
 if __name__ == '__main__':
